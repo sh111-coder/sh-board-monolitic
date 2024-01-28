@@ -38,7 +38,8 @@
 
 ---
 ## INFRA 
-<img width="1127" alt="infra" src="https://github.com/woowacourse-study/2023-backend-mission-review-study/assets/95729738/c20d6531-2e2d-4959-81ce-a06b98a6c980">
+![INFRA](https://github.com/woowacourse-study/2023-backend-mission-review-study/assets/95729738/87ad228b-6e7c-43e6-92c9-1e6b4308e611)
+
 
 ## CI/CD
 <img width="1087" alt="ci:cd" src="https://github.com/woowacourse-study/2023-backend-mission-review-study/assets/95729738/18c79afa-c70d-4fe2-bfb8-2bbadf3c3908">
