@@ -11,4 +11,4 @@ ARG JAR_FILE=./build/libs/*.jar
 COPY ${JAR_FILE} /shboard/shboard.jar
 
 # 어플리케이션 실행 명령어를 지정합니다.
-ENTRYPOINT ["java", "-jar", "shboard.jar", "--spring.profiles.active=prod"]
+ENTRYPOINT ["java", "-jar", "shboard.jar"]
