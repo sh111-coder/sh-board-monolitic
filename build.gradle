@@ -39,10 +39,6 @@ dependencies {
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    // 테스트를 위한 embedded-redis 추가
-    implementation group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
-    implementation 'org.springframework.session:spring-session-data-redis'
 }
 
 tasks.named('bootBuildImage') {
