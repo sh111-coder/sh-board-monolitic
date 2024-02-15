@@ -30,7 +30,8 @@ public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler) throws Exception {
         final String sessionIdByCookie = getSessionIdByCookie(request);
         final String decodedSessionId = new String(Base64.getDecoder().decode(sessionIdByCookie.getBytes()));
-        if (!redisTemplate.hasKey(namespace + REDIS_SESSION_KEY + decodedSessionId)) {
+        final String testKey = namespace + REDIS_SESSION_KEY + decodedSessionId;
+        if (!redisTemplate.hasKey(testKey)) {
             log.warn("Session Cookie exist, but Session in Storage is not exist");
             throw new AuthException.FailAuthenticationMemberException();
         }
