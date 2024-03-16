@@ -31,6 +31,7 @@ public class BoardService {
         return BoardsResponse.of(boardPage, pageable);
     }
 
+    @Transactional(readOnly = true)
     public BoardDetailResponse readDetail(final Long boardId) {
         final Board findBoard = boardRepository.findById(boardId)
                 .orElseThrow(BoardException.NotFoundBoardException::new);
