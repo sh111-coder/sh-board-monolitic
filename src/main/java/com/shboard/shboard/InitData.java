@@ -29,7 +29,7 @@ public class InitData {
 
         @Transactional
         public void init() {
-            int totalPostCount = 10;
+            int totalPostCount = 105;
 
             final Member member = com.shboard.shboard.member.domain.Member.builder()
                     .loginId("sh111")
