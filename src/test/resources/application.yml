@@ -27,7 +27,7 @@ spring:
       port: 1111
     web:
       pageable:
-        default-page-size: 3
+        default-page-size: 10
 
 
   jpa:

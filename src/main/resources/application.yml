@@ -28,7 +28,7 @@ spring:
       port: 6379
     web:
       pageable:
-        default-page-size: 3
+        default-page-size: 10
 
   jpa:
     hibernate:
