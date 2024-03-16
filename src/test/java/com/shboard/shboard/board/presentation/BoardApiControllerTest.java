@@ -268,6 +268,7 @@ class BoardApiControllerTest extends AcceptanceTest {
             final BoardWriteRequest request = new BoardWriteRequest(title, content);
             writeBoardRequest(request, sessionId);
             final long boardId = 1L;
+            final Long preViewCount = boardRepository.findById(boardId).get().getViewCount();
 
             // when
             final ExtractableResponse<Response> response = readDetailRequest(boardId, sessionId);
@@ -279,6 +280,7 @@ class BoardApiControllerTest extends AcceptanceTest {
                 softly.assertThat(response.jsonPath().getString("title")).isEqualTo(title);
                 softly.assertThat(response.jsonPath().getString("content")).isEqualTo(content);
                 softly.assertThat(response.jsonPath().getString("writerNickname")).isEqualTo(nickname);
+                softly.assertThat(response.jsonPath().getLong("viewCount")).isEqualTo(preViewCount + 1L);
             });
         }
 

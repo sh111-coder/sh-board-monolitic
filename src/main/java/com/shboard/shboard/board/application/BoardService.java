@@ -34,6 +34,7 @@ public class BoardService {
     public BoardDetailResponse readDetail(final Long boardId) {
         final Board findBoard = boardRepository.findById(boardId)
                 .orElseThrow(BoardException.NotFoundBoardException::new);
+        findBoard.readBySomeone();
 
         return BoardDetailResponse.of(findBoard);
     }

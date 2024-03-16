@@ -111,6 +111,7 @@ class BoardServiceTest extends ServiceTest {
         private String title = "title1";
         private String content = "content1";
         private String writerNickname = "성하";
+        private Long preViewCount;
 
         @BeforeEach
         void setUp() {
@@ -122,7 +123,8 @@ class BoardServiceTest extends ServiceTest {
             final Member savedMember = memberRepository.save(member);
 
             final Board board = new Board(savedMember, title, content);
-            boardRepository.save(board);
+            final Board savedBoard = boardRepository.save(board);
+            preViewCount = savedBoard.getViewCount();
         }
 
         @Test
@@ -136,6 +138,7 @@ class BoardServiceTest extends ServiceTest {
                 softly.assertThat(response.title()).isEqualTo(title);
                 softly.assertThat(response.content()).isEqualTo(content);
                 softly.assertThat(response.writerNickname()).isEqualTo(writerNickname);
+                softly.assertThat(response.viewCount()).isEqualTo(preViewCount + 1L);
             });
         }
 
