@@ -10,6 +10,7 @@ import com.shboard.shboard.board.exception.BoardException;
 import com.shboard.shboard.member.domain.Member;
 import com.shboard.shboard.member.domain.MemberRepository;
 import com.shboard.shboard.member.exception.MemberException;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +32,6 @@ public class BoardService {
         return BoardsResponse.of(boardPage, pageable);
     }
 
-    @Transactional(readOnly = true)
     public BoardDetailResponse readDetail(final Long boardId) {
         final Board findBoard = boardRepository.findById(boardId)
                 .orElseThrow(BoardException.NotFoundBoardException::new);
