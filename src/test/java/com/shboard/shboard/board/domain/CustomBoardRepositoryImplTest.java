@@ -36,7 +36,7 @@ class CustomBoardRepositoryImplTest extends RepositoryTest {
     class SearchByCondition {
 
         private int memberCount = 3;
-        private int totalPostCount = 10;
+        private int totalPostCount = 10 * defaultPageSize;
 
         @BeforeEach
         void setUp() {
@@ -115,8 +115,8 @@ class CustomBoardRepositoryImplTest extends RepositoryTest {
             // then
             assertSoftly(softly -> {
                 softly.assertThat(boards.getNumber()).isEqualTo(0);
-                softly.assertThat(boards.getTotalElements()).isEqualTo(2);
-                softly.assertThat(contents.size()).isEqualTo(2);
+                softly.assertThat(boards.getTotalElements()).isEqualTo(12);
+                softly.assertThat(contents.size()).isEqualTo(defaultPageSize);
                 softly.assertThat(contents)
                         .extracting(Board::getTitle)
                         .allMatch(title -> title.toUpperCase().contains(variousCaseSearchTitle.toUpperCase()));
@@ -138,8 +138,8 @@ class CustomBoardRepositoryImplTest extends RepositoryTest {
             // then
             assertSoftly(softly -> {
                 softly.assertThat(boards.getNumber()).isEqualTo(0);
-                softly.assertThat(boards.getTotalElements()).isEqualTo(3);
-                softly.assertThat(contents.size()).isEqualTo(3);
+                softly.assertThat(boards.getTotalElements()).isEqualTo(totalPostCount / memberCount);
+                softly.assertThat(contents.size()).isEqualTo(defaultPageSize);
                 softly.assertThat(contents)
                         .extracting(Board::getWriterNickname)
                         .allMatch(writerNickname -> writerNickname.equals(searchWriterNickname));
@@ -162,8 +162,8 @@ class CustomBoardRepositoryImplTest extends RepositoryTest {
             // then
             assertSoftly(softly -> {
                 softly.assertThat(boards.getNumber()).isEqualTo(0);
-                softly.assertThat(boards.getTotalElements()).isEqualTo(3);
-                softly.assertThat(contents.size()).isEqualTo(3);
+                softly.assertThat(boards.getTotalElements()).isEqualTo(totalPostCount / memberCount);
+                softly.assertThat(contents.size()).isEqualTo(defaultPageSize);
                 softly.assertThat(contents)
                         .extracting(Board::getWriterNickname)
                         .allMatch(writerNickname -> writerNickname.equals(searchWriter));
